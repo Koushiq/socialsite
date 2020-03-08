@@ -41,7 +41,7 @@
             $picture='postpic/'.$username.$postid.'.jpg';
             $handle = $_FILES["picture"]["tmp_name"];
             $insertQuery = "insert into post ( postid,username,content,picture,likecount) values ( '".$postid."' , '".$username."', '".$content."' , '".$picture."' , '0' ) ; "; 
-            $conn->query($insertQuery);
+            $conn->query($insertQuery) or die($conn->error);
             copy($handle, $picture);
         }
         else
@@ -49,8 +49,6 @@
             $postStsErr="Both fields can't be empty at least one field needs to have data!";
         }
     }
-
-
 ?>
 
 

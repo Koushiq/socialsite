@@ -1,8 +1,4 @@
 
-.side_bar_nav
-{
-    background-color: blue;
-}
 .side_bar_nav ul
 {
   height: 100%;
@@ -25,12 +21,13 @@
 #col-1
 {
     width: 6.3%;
+    position: relative;
 }
 #col-2
 {
-    left:6.3%;
-    width: 100%;
+    margin-left: 120px;
+    width: 93.7%;
     background-color: rgba(212, 209, 209, 0.705);
-    overflow-y: scroll;
-   
+    position: absolute;
+    overflow: hidden;
 }

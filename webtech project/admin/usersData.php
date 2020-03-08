@@ -1,13 +1,13 @@
 <?php
      session_start();
-      if(!isset($_SESSION['username']))
+      if(!isset($_SESSION['adminUsername']))
       {
           session_destroy();
           header("location:securityCode.php");
       }
-      $username=$_SESSION['username'];
-      
+      $adminUsername=$_SESSION['adminUsername'];
 ?>
+
 
 
 

@@ -62,7 +62,7 @@
         }
         if($validateInfo)
         {
-            $_SESSION['username']=$username;
+            $_SESSION['adminUsername']=$username;
             header("location:adminDashboard.php");
         }
     }

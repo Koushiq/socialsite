@@ -37,10 +37,10 @@
     </head>
     <body>
        <div class="security_code_tab form-input center_align">
-           <form method="post" action="" style="margin-top:150px;">
+           <form method="post" action="" style="margin-top:150px;" autocomplete="off">
 
                 <div class="security_code_input">
-                    <input type="text" name="securityCode" placeholder="Enter Security Code to Proceed ">
+                    <input type="password" name="securityCode" placeholder="Enter Security Code to Proceed ">
                 </div>
                 <div class="btn btn_danger">
                     <input type="submit" name="submit" value="Submit Code">

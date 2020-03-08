@@ -1,11 +1,11 @@
 <?php
      session_start();
-      if(!isset($_SESSION['username']))
+      if(!isset($_SESSION['adminUsername']))
       {
           session_destroy();
           header("location:securityCode.php");
       }
-      $username=$_SESSION['username'];
+      $adminUsername=$_SESSION['adminUsername'];
 ?>
 
 
@@ -18,15 +18,16 @@
          <link rel="stylesheet" type="text/css" href="adminDashboard.css">
     </head>
     <body>
-         <div class="welcome_text">
-               <h2 class="text_dark">Welcome User  <?php echo $username ;?>  </h2>
-         </div>
-         <div class="side_bar_nav">
+          <div class="side_bar_nav column" id="col-1">
                <ul>
                     <li> <a href="adminDashboard.php" class="text_angel">Home</a>  </li>
                     <li> <a href="#" class="text_angel">Add Admin</a>  </li>
                     <li> <a href="usersData.php" class="text_angel">Users Data</a>  </li>
                </ul>
          </div>
+         <div class="welcome_text column" id="col-2">
+               <h2 class="text_dark center_align">Welcome User  <?php echo $adminUsername ;?>  </h2>
+         </div>
+         
     </body>
 </html>

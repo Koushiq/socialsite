@@ -19,6 +19,7 @@
     {
         if(!empty($_POST["username"]))
         {
+            
             $username=htmlspecialchars($_POST["username"]);
             
         }
@@ -30,7 +31,16 @@
 
         if(!empty($_POST["firstName"]))
         {
-            $firstName=htmlspecialchars($_POST["firstName"]);
+            $pattern = '/[\'\/~`\!@#\$%\^&\*\(\)_\-\+=\{\}\[\]\|;:"\<\>,\.\?\\\]/';
+                if(!preg_match('#[0-9]#',$_POST['firstName'])   && !preg_match($pattern, $_POST['firstName']))
+                {
+                    $firstName=htmlspecialchars($_POST['firstName']);
+                }
+                else
+                {
+                    $firstNameErr="numbers and special chars not allowed";
+                    $validateInfo=false;
+                }
            
         }
         else
@@ -41,7 +51,16 @@
 
         if(!empty($_POST["lastName"]))
         {
-            $lastName=htmlspecialchars($_POST["lastName"]);
+                $pattern = '/[\'\/~`\!@#\$%\^&\*\(\)_\-\+=\{\}\[\]\|;:"\<\>,\.\?\\\]/';
+                if(!preg_match('#[0-9]#',$_POST['lastName'])   && !preg_match($pattern, $_POST['lastName']))
+                {
+                    $lastName=htmlspecialchars($_POST['lastName']);
+                }
+                else
+                {
+                    $lastNameErr="numbers and special chars not allowed";
+                    $validateInfo=false;
+                }
             
         }
         else
@@ -182,18 +201,19 @@
                             <label>Enter Username</label>
                             <br>
                             <input type="text" name="username" placeholder="Username">
-                            <br>
+                            
                             <label class="text_error"> <?php echo $usernameErr; ?> </label>
                         </div>
 
-                        <div class="form-input" id="firstAndLastName">
+                        <div class="form-input">
                             <label>First Name</label>
-                            <label id="lastNameLabel">Last Name</label>
                             <br>
                             <input type="text" name="firstName" placeholder="First Name">
-                            <input type="text" name="lastName" placeholder="Last Name" id="lastNameInput">
+                            <label class="text_error"><?php echo $firstNameErr; ?></label>
                             <br>
-                            <label class="text_error"><?php echo $firstNameErr; ?></label> 
+                            <label>Last Name</label>
+                            <br> 
+                            <input type="text" name="lastName" placeholder="Last Name">
                             <label class="text_error"><?php echo $lastNameErr; ?></label>
                             
                         </div>
@@ -202,7 +222,7 @@
                             <label>Enter Password</label>
                             <br>
                             <input type="password" name="password" placeholder="Password">
-                            <br>
+                            
                             <label class="text_error"><?php echo $passwordErr; ?></label>
                         </div>
 
@@ -210,7 +230,7 @@
                             <label>Re-type Password</label>
                             <br>
                             <input type="password" name="retypePassword" placeholder="Password">
-                            <br>
+                            
                             <label class="text_error"><?php echo $passwordErr; ?></label>
                         </div>
                         
@@ -218,7 +238,7 @@
                             <label>Select Date Of Birth</label>
                             <br>
                             <input type="date" name="dateOfBirth" value="YYYY-MM-DD">
-                            
+                            <label class="text_error"><?php echo $dateOfBirthErr; ?></label>
 
 
                         </div>
@@ -227,7 +247,6 @@
                             <label>Security Question</label>
                             <br>
                             <input type="text" name="securityQuestion" placeholder="Enter the name of your favorite movie ? ">
-                            <br>
                             <label class="text_error"><?php echo $securityQuestionErr; ?></label>
                         </div>
 
@@ -240,7 +259,7 @@
                             <label>Male</label>
                             <input type="radio" name="gender" value="female">
                             <label>Female</label>
-                            <br>
+                            
                             <label class="text_error">
                                 <?php echo $genderErr; ?>
                             </label>
